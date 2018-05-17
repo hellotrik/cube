@@ -5,7 +5,7 @@ s.mount '/',HTTPServlet::FileHandler,'../',true
 Signal.trap(:INT){s.stop}
 s.start
 
-@echo off 
+@echo off //å¼€æœºæŒ‚èµ·vhd
 echo select vdisk file="c:\e.vhd" >vhdsel 
 echo attach vdisk>>vhdsel 
 echo list disk>>vhdsel 
@@ -13,22 +13,22 @@ diskpart /s vhdsel
 del /f /q vhdsel 
 exit
 
-@echo off
+@echo off //æ¸…é™¤å£çº¸æ–‡ä»¶å¤¹å†å²å»é™¤è¾¹ç¼˜åœé 
 reg delete HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Wallpapers\Images /va /f>nul
 reg add "hkcu\Control Panel\Desktop" /v WindowArrangementActive /t REG_SZ /d 0 /f>nul
 echo Y|del C:\Users\Administrator\AppData\Local\Temp\*.* >nul
 @pause
 
-REM ~ ¼ÆËã»ú\HKEY_CLASSES_ROOT\
+REM ~ è®¡ç®—æœº\HKEY_CLASSES_ROOT\
 REM ~ edit\command
 REM ~ %SystemRoot%\system32\NOTEPAD.EXE %1
 REM ~ %ProgramFiles(x86)%\AutoIt3\SciTE\SciTE.exe %1
-::»ñÈ¡È¨ÏŞºó ĞŞ¸Ä HKEY_CLASSES_ROOT\Directory\Background\shell ÄÚpowershellºÍcmdµÄshowºÍhideÃû
-::É¾³ıondrinve¿ì½İ ¼ÆËã»ú\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace
-::É¾³ı»ØÊÕÕ¾¹Ì¶¨µ½¿ªÊ¼ÆÁÄ»HKEY_CLASSES_ROOT\folder
+::è·å–æƒé™å ä¿®æ”¹ HKEY_CLASSES_ROOT\Directory\Background\shell å†…powershellå’Œcmdçš„showå’Œhideå
+::åˆ é™¤ondrinveå¿«æ· è®¡ç®—æœº\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace
+::åˆ é™¤å›æ”¶ç«™å›ºå®šåˆ°å¼€å§‹å±å¹•HKEY_CLASSES_ROOT\folder
 setlocal ENABLEDELAYEDEXPANSION 
-::ÎÄ¼şÄ¬ÈÏ´ò¿ª·½Ê½HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts
-::ÆÁ±Îwin10ÉÌµêÍÆËÍ
+::æ–‡ä»¶é»˜è®¤æ‰“å¼€æ–¹å¼HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts
+::å±è”½win10å•†åº—æ¨é€
 ::reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent /v DisableWindowsConsumerFeatures /t REG_DWORD /d 1 /f
 REM ~ [HKEY_CLASSES_ROOT\*\shell\runas]
 REM ~ @="Take Ownership"
@@ -42,11 +42,11 @@ REM ~ "NoWorkingDirectory"=""
 REM ~ [HKEY_CLASSES_ROOT\Directory\shell\runas\command]
 REM ~ @="cmd.exe /c takeown /f \"%1\" /r /d y && icacls \"%1\" /grant administrators:F /t"
 REM ~ "IsolatedCommand"="cmd.exe /c takeown /f \"%1\" /r /d y && icacls \"%1\" /grant administrators:F /t"
-for  /f %%i in ('reg query HKCR /f edit  /e /s  /k') do set s=%%i & if not "!s:~,4!"=="ËÑË÷½áÊø" for /f  %%z in ('reg query !s! /f "NOTEPAD.EXE %%1" /d /s') do if not "%%z"=="ËÑË÷½áÊø:"  if not "%%z"=="(Ä¬ÈÏ)" reg add %%z /ve /d "\"%%ProgramFiles(x86)%%\AutoIt3\SciTE\SciTE.exe\" \"%%1\"" /t REG_EXPAND_SZ /f
-@pause
+for  /f %%i in ('reg query HKCR /f edit  /e /s  /k') do set s=%%i & if not "!s:~,4!"=="æœç´¢ç»“æŸ" for /f  %%z in ('reg query !s! /f "NOTEPAD.EXE %%1" /d /s') do if not "%%z"=="æœç´¢ç»“æŸ:"  if not "%%z"=="(é»˜è®¤)" reg add %%z /ve /d "\"%%ProgramFiles(x86)%%\AutoIt3\SciTE\SciTE.exe\" \"%%1\"" /t REG_EXPAND_SZ /f
+@pause //ä¿®æ”¹æ–‡æœ¬æ–‡æ¡£ç¼–è¾‘é€‰é¡¹
 
 
-BWG7X-J98B3-W34RT-33B3R-JVYW9
+BWG7X-J98B3-W34RT-33B3R-JVYW9 //vs2013code
 FBJVC-3CMTX-D8DVP-RTQCT-92494
 N6K18-HW9KJ-498PP-7Z2PC-1B9FK
 K90PH-P23J7-GLKJ4-LK124-LKJ23
